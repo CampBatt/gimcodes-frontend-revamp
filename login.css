@@ -1,0 +1,133 @@
+body{
+    overflow-y: hidden;
+}
+
+.login_or_sign_up{
+    background-color: transparent;
+    width: 90vw;
+    height: 100vh;
+    margin: 0px;
+    position: absolute;
+    top: 0;
+    left: 10vw;
+    z-index:-10;
+}
+
+.login_or_sign_up ul.login_ul{
+    padding: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2.5vh;
+    width: 25vw;
+    text-align: center;
+    background-color: #343b42;
+    border-radius: 10px;
+    margin-top: 25vh;
+    height: 45vh;
+    margin-bottom: 20vh;
+    border-width: 1px;
+    border-color: #2a2f36;
+    border-style: solid;
+}
+.login_or_sign_up ul li{
+    display: block;
+}
+
+.login_or_sign_up ul .login_title{
+    color: white;
+    font-size: 4vh;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}
+
+.login_or_sign_up ul .login_input{
+    border-radius: 7px;
+    width: 17vw;
+    padding-left: 0.25vw;
+    padding-right: 0.25vw;
+    padding-top: 0.25vh;
+    padding-bottom: 0.25vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2vh;
+    background-color: #343b42;
+    height: 5vh;
+    border-width: 1px;
+    border-color: #2a2f36;
+    border-style: solid;
+}
+
+
+.login_or_sign_up ul .login_input input{
+    color: #9c9c9e;
+    background-color: #495158;
+    background-color: #343b42;
+    font-size: 2vh;
+    border-radius: 10px;
+    width: 17vw;
+    border: none;
+    outline: none;
+    margin-top: 2.5vh;
+}
+
+
+
+.login_or_sign_up ul .login_input input:focus{
+    color: white;
+}
+
+.login_or_sign_up ul .login_button{
+    padding-top: 0.25vh;
+    padding-bottom: 0.25vh;
+    border: none;
+    border-radius: 25px;
+    background-color: #729dff;
+    color: #fff;
+    font-size: 3vh;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-left: auto;
+    margin-right: auto;
+    width: 18vw;
+    text-align: center;
+    margin-top: 2vh;
+    margin-bottom: 1vh;
+}
+
+.login_or_sign_up ul #create_account_button.login_button{
+    width: 15vw;
+    font-size: 2.5vh;
+}
+
+.login_or_sign_up ul #login_account_button.login_button{
+    width: 15vw;
+    font-size: 2.5vh;
+}
+
+
+.login_or_sign_up ul li ul{
+    display: flex;
+    padding: 0px;
+}
+
+.login_or_sign_up ul li ul li{
+    color: #9c9c9e;
+    font-size: 1.5vh;
+}
+
+.login_or_sign_up ul li ul hr{
+    color: #2a2f36;
+    background-color: #2a2f36;
+    width: 10vw;
+    height: 2px;
+    border: none;
+}
+
+.login_or_sign_up ul li ul hr.left_or{
+    margin-right: 0.3vw;
+}
+
+.login_or_sign_up ul li ul hr.right_or{
+    margin-left: 0.3vw;
+}

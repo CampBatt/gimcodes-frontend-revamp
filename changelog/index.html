@@ -1,0 +1,329 @@
+﻿<!DOCTYPE html>
+
+
+<html>
+    <head>
+        <link rel = "stylesheet", href="/main.css"/>
+        <link rel = "stylesheet", href="/login.css"/>
+        <link rel = "stylesheet", href="change.css"/>
+        <link rel = "icon" href="/favicon.ico" type="image/x-icon"/>
+        <title>Gimcodes Changelog</title>
+    </head>
+
+
+    <body>
+        <div id="add_chat_menu" class="hidden">
+            <ul>
+                <li class="menu_title">Add a Chat</li>
+                <li class="menu_input"><input value="Chat Name" id="add_chat_input"></li>
+                <li class="menu_button"><div id="add_chat_add_button">Add</div></li>
+            </ul>
+        </div>
+        <div id="create_chat_menu" class="hidden">
+            <ul>
+                <li class="menu_title">Create a Chat</li>
+                <li class="menu_input"><input value="Chat Name" id="create_chat_input"></li>
+                <li class="menu_button"><div id="create_chat_create_button">Create</div></li>
+            </ul>
+        </div>
+        <div id="login_page" class="login_or_sign_up">
+            <ul class="login_ul" id="login_ul">
+                <li class="login_title">Login to Your Account</li>
+                <li id="login_user_input" class="login_input"><input value="Username"></li>
+                <li id="login_pass_input" class="login_input"><input value="Password"></li>
+                <li id="login_button" class="login_button"><div>Login</div></li>
+                <li class="or_option">
+                    <ul><hr class="left_or"><li>or</li><hr class="right_or">
+                    </ul>
+                </li>
+                <li id="create_account_button" class="login_button"><div>Sign Up</div></li>
+            </ul>
+        </div>
+
+        <div id="create_page"  class="login_or_sign_up">
+            <ul class="login_ul" id="create_ul">
+                <li class="login_title">Create a New Account</li>
+                <li id="create_user_input" class="login_input"><input value="Username"></li>
+                <li id="create_email_input" class="login_input"><input value="Email"></li>
+                <li id="create_pass_input" class="login_input"><input value="Password"></li>
+                <li id="create_button" class="login_button"><div>Sign Up</div></li>
+                <li class="or_option">
+                    <ul><hr class="left_or"><li>or</li><hr class="right_or">
+                    </ul>
+                </li>
+                <li id="login_account_button" class="login_button"><div>Login</div></li>
+            </ul>
+        </div>
+        <ul id="content">
+            <li id="serverstuff">
+                <ul id="server_list">
+                    <li class="Gim_logo"><img src="/assets/Gimcodes3.png"></li>
+                    <hr id="server_line_1">
+                    <li class="nav_side"><a href="/codefinder/">Code Finder</a></li>
+                    <li class="nav_side" id="nav_create"><a href="#">Sign Up</a></li>
+                    <li class="nav_side" id="nav_login"><a href="#">Login</a></li>
+                    <li class="nav_side"><a href="/chat/">Chat</a></li>
+                    <li class="nav_side"><a href="/changelog/">Changelog</a></li>
+                    <hr id="server_line_2">
+                    <li class="channle_item" id="add_a_chat"><ul><li><img src="/assets/add_icon.png"></li><li class="server_text"><a href="#">Add a Chat</a></li></ul></li>
+                    <li class="channle_item" id="create_a_chat"><ul><li><img src="/assets/add_icon.png"></li><li class="server_text"><a href="#">Create a Chat</a></li></ul></li>
+                    <hr id="server_line_3">
+                    </li>
+                </ul>
+            </li><li class="changestuff">
+                <ul class="change_list">
+                    <li class="change_blog">
+                        <ul>
+                            <li class="bigTtl"><ul><hr class="left"><li class="versiontext"><b>Version 1.0 - 9/14/25</b></li><hr class="right"></ul></li>
+                            <li class="Ttl"><b>A Complete Revamp</b></li>
+                            <li>Gimcodes has been completly remade from the bottom up.</li>
+                            <li class="Ttl"><b>Gimcodes Chats</b></li>
+                            <li>Gimcodes now has the ability to have multiple chats. (A message is text you send, a chat is a place where messages are sent)</li>
+                            <li>Previously only 75 messages were saved but now an infinite number of messages can be saved</li>
+                            <li>When a chat is opened the last 50 messages are displayed, currently you can only see these messages but in the future you will be able to scroll infintly to see all messages in chat</li>
+                            <li>The default chat that every account is added to is "General"</li>
+                            <li>Users can add/join chats as well as create their own</li>
+                            <li>Users are limited to creating 5 chats as of now</li>
+                            <li>There is system in place for differnt roles in a chat, currently they do nothing but it allows for moderators to be added in the future</li>
+                            <li>Nearly all the code has been rewritten (this is a big update).</li>
+                            <li class="Ttl"><b>Instant Messaging</b></li>
+                            <li>Because im now self hosting the Gimcodes API messages can now be sent through websockets.</li>
+                            <li>Websockets allow sending a recieving messages to be event driven, i.e. no more constantly refreshing messages or waiting for messages to sync, messages are sent and recieved instantly.</li>
+                            <li>The way messages are loaded also means that embeded content like videos games or polls are possible in the future.</li>
+                            <li class="Ttl"><b>The Frontend</b></li>
+                            <li>The frontend UI has been completly redesigned for a more modern look thats also more user friendly and less prone to bugs.</li>
+                            <li>The frontend is still hosted on vercel but now under the name gimcodes.com</li>
+                            <li class="Ttl"><b>Self Hosting</b></li>
+                            <li>The backend and database of Gimcodes are now self hosted, this means Gimcodes is no longer limited by Vercel.</li>
+                            <li>Because of self hosting, the database of gimcodes is now postgreSQL instead of google sheets, this allows me to store more complicated data and organize it more efficantly all while not worrying about rate limits.</li>
+                            <li>Because of self hosting major changes to message sending and storing have been made.</li>
+                            <li class="Ttl"><b>A Shift in What Gimcodes Is</b></li>
+                            <li>Gimcodes really isn't about finding Gimkit codes anymore.</li>
+                            <li>Gimcodes has slowly and now more quickly evolved into a website for comunication during school.</li>
+                            <li>Soon Gimcodes' main purpose will be facilitating private and secure messaging using end to end encrytion.</li>
+                            <li class="Ttl"><b>Security</b></li>
+                            <li>Gimcodes is now much more secure than before.</li>
+                            <li>Fixed all cases of XSS.</li>
+                            <li>Passwords are no longer visable while typing.</li>
+                            <li class="Ttl"><b>End to End Encryption</b></li>
+                            <li>End to end encryption is not implemented yet but it's closer than you might thing.</li>
+                            <li>Accounts are already created with the keys necesary to perform the encryption and the code to encrypt and decrypt messages has already been written.</li>
+                            <li class="Ttl"><b>Changelog Redactions</b></li>
+                            <li>If you know you know.</li>
+                            <li class="Ttl"><b>Miscellaneous Changes and Additions</b></li>
+                            <li>Because messages no longer reload every few secconds, the display for how long ago a message was sent now updates every second</li>
+                            <li>The files of the website have been reorganized making it easier to make changes and getting rid of the .html at the end of pages</li>
+                            <li>The UI should now fit most desktop screen sizes</li>
+                            <li class="Ttl"><b>Missing Features</b></li>
+                            <li>Because the entire website was remade some old features are gone or have not been remade yet</li>
+                            <li>Commands have not been remade, many of them were concerningly powerfull and weren't implemented well. They will probably make a return as commands that chat moderators and owners can use.</li>
+                            <li>Images were never really meant to be able to be sent in chat because they could be used to hack people, the bugs that allowed images to be sent are fixed now whitch means it's impossible to send images. Images should make a return in a more secure way very soon</li>
+                            <li>Profile picures used to be stored as a set of pixles due to the limitations of google sheets, because of self hosting I will be able to store images for profile pictures on the server but this hasn't been implemented yet so for now everyone has a blue profile picture.</li>
+                            <li>Viewing profiles is also a missing feature, this is simply because I haven't made the UI for it yet. It's the same situation for searching for profiles and modifying your profile.</li>
+                            <li class="Ttl"><b>Roadmap</b></li>
+                            <li>This order isn't set in stone</li>
+                            <li>Profile viewing and end to end encrypted DMs</li>
+                            <li>Encrypted group chats</li>
+                            <li>File system</li>
+                            <li>Profile picutes, embeded contnet, chat pictures (all dependent on the file system)</li>
+                            <li>File uploads</li>
+                            <li>Profile pages, a page where you can post things for others to see</li>
+                            <li>Daily Polls</li>
+                            <li>Games like block blast</li>
+                        </ul>
+                    </li>
+                    <li class="change_blog">
+                        <ul>
+                            <li class="bigTtl"><ul><hr class="left"><li class="versiontext"><b>Version 0.10.1 - 4/29/24</b></li><hr class="right"></ul></li>
+                            <li class="Ttl"><b>Redacted</b></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li class="Ttl"><b>Roadmap</b></li>
+                            <li>Version 0.11: Dedicated login page, help/about page, Gimkit cheats page and command reworks.</li>
+                            <li>Version 0.12: Gimkit Groups.</li>
+                            <li>Version 1.0: Search engine optimization, possibly Google ads.</li>
+                        </ul>
+                    </li>
+                    <li class="change_blog">
+                        <ul>
+                            <li class="bigTtl"><ul><hr class="left"><li class="versiontext"><b>Version 0.10 - 4/14/24</b></li><hr class="right"></ul></li>
+                            <li class="Ttl"><b>Redacted</b></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li class="Ttl"><b>Redacted</b></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li class="Ttl"><b>Redacted</b></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li class="Ttl"><b>Redacted</b></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li class="Ttl"><b>Roadmap</b></li>
+                            <li>Version 0.11: Dedicated login page, help/about page, Gimkit cheats page and command reworks.</li>
+                            <li>Version 0.12: Gimkit Groups.</li>
+                            <li>Version 1.0: Search engine optimization, possibly Google ads.</li>
+                        </ul>
+                        
+                    </li>
+                    <li class="change_blog">
+                        <ul>
+                            <li class="bigTtl"><ul><hr class="left"><li class="versiontext"><b>Version 0.9.2 - 4/1/24</b></li><hr class="right"></ul></li>
+                            <li class="Ttl"><b>Search Page</b></li>
+                            <li>A new page for searching for accounts has been added, you can see all Gimcodes accounts, search by username, and click on accounts to go to their profile.</li>
+                            <li>Although Gimcodes only has 16 accounts the system is scalable and will work with any number of accounts.</li>
+                            <li>The usernames shown in the search page will be dynamicly cut off if they don't fit your screen size.</li>
+                            <li>You can get to the new search page from your profile.</li>
+                            <li class="Ttl"><b>New Message Modifiers</b></li>
+                            <li>When you send a message it is now sent with a modifier.</li>
+                            <li>The defualt modifier is "none" and will send your message normally.</li>
+                            <li>The modifer "mixed", will scramble your messages words in a random order.</li>
+                            <li>The modifer "uppercase", will make all the letters in your messages capitalized.</li>
+                            <li>The modifer "emoji", will replace 30% of the words in your messages with random emojis and will add a random emoji after 20% of your messages.</li>
+                            <li>The modifer "paraphrase", will use gramerly to try and paraphrase your messages, making them mostly say the same thing but with different words.</li>
+                            <li>All of these modifiers can be set with the new /mod command. Syntax: /mod:username:ModifierName</li>
+                            <li class="Ttl"><b>New Commands</b></li>
+                            <li>Using the /noimg command will make it so that none of the images in chat are visable. Syntax: /noimg:username</li>
+                            <li>Using the /online command will give you a list of all the people who have been online in the last 50 minutes and will tell you when they were last online. It is an admin command</li>
+                            <li class="Ttl"><b>Roadmap</b></li>
+                            <li>Version 0.10: Dedicated login page, help/about page, Gimkit cheats page and command reworks.</li>
+                            <li>Version 0.11: Gimkit Groups.</li>
+                            <li>Version 1.0: Search engine optimization, possibly Google ads.</li>
+                        </ul>
+                    </li>
+                    <li class="change_blog">
+                        <ul>
+                            <li class="bigTtl"><ul><hr class="left"><li class="versiontext"><b>Version 0.9.1 - 3/25/24</b></li><hr class="right"></ul></li>
+                            <li class="Ttl"><b>Profile Page</b></li>
+                            <li>Added a new profile page where you can view your account statistics and information.</li>
+                            <li>You can go to the profile page by clicking Profile or by clicking someone's profile picture in chat.</li>
+                            <li>You can now view an accounts username, email, profile picture, about section and ID from the profile page.</li>
+                            <li>New statistics are accocianted with your account including, number of messages sent, number of gimkit codes found, your last time online, your join date/account creation date, your mute status, and your admin status.</li>
+                            <li class="Ttl"><b>Account ID</b></li>
+                            <li>Accounts now have an ID, now that nearly every aspect of your account can be changed having something to identify accounts is useful.</li>
+                            <li>Your account ID is a unique number that will never change, for example my ID will always be 1 no matter what I do to my username.</li>
+                            <li>Similar to how accounts on Discord used to work your username in chat is now username#ID, for chat commands you still only type the username without the ID, in the future it will use account ID's instead of account usernames.</li>
+                            <li class="Ttl"><b>Changelog Changes</b></li>
+                            <li>Changelogs now include the date.</li>
+                            <li>You can now scroll to see all previous update logs.</li>
+                            <li class="Ttl"><b>Bugfixes</b></li>
+                            <li>Profile pictures are now drawn twice when they are loaded to elimate the cracks that were showing earlier.</li>
+                            <li class="Ttl"><b>Roadmap</b></li>
+                            <li>Version 0.9.2: profile search, dedicated login page, chat optimization and bug fixes.</li>
+                            <li>Version 0.10: Gimkit Groups with end to end encryption.</li>
+                            <li>Version 1.0: Search engine optimization, possibly Google ads.</li>
+                        </ul>
+                    </li>
+                    <li class="change_blog">
+                        <ul>
+                            <li class="bigTtl"><ul><hr class="left"><li class="versiontext"><b>Version 0.9 - 3/17/24</b></li><hr class="right"></ul></li>
+                            <li class="Ttl"><b>Sign Up Page</b></li>
+                            <li>Added a new sign up page that looks much better than the old one.</li>
+                            <li>New accounts have an email attached to them as well as a custom profile picture.</li>
+                            <li class="Ttl"><b>Profile Pictures</b></li>
+                            <li>Profile picture have been added, in the near future you will be able to customize your profile picture on existing accounts.</li>
+                            <li class="Ttl"><b>Redacted</b></li>
+                            <li></li>
+                            <li>You can now scroll to see all previous update logs.</li>
+                            <li class="Ttl"><b>Priority Codes</b></li>
+                            <li>Priority codes have been renamed to manual codes.</li>
+                            <li>Manual codes can now be set with the /manual command. Syntax: /manual:code.</li>
+                            <li>The old priority codes page has been removed now that the /manual command exists.</li>
+                            <li class="Ttl"><b>Roadmap</b></li>
+                            <li>Version 0.9.1: Profile viewing, profile search, and profile custimization.</li>
+                            <li>Version 0.10: Gimkit Groups.</li>
+                            <li>Version 1.0: Search engine optimization, possibly Google ads.</li>
+                        </ul>
+                    </li>
+                    <li class="change_blog">
+                        <ul>
+                            <li class="bigTtl"><ul><hr class="left"><li class="versiontext"><b>Version 0.8 - 3/11/24</b></li><hr class="right"></ul></li>
+                            <li class="Ttl"><b>Client Side Commands</b></li>
+                            <li>Added a system for certain commands to be ran in javascript in the browser, you don't need an admin account to use these commands.</li>
+                            <li>New /colors command. This command will change the targets screen a bunch of random colors, it is a client side command. Syntax: /colors:person</li>
+                            <li>New /marco command. This command will make all online users say "polo", it is a client side command.</li>
+                            <li>New /ip command. This command will make the target say their public IP address, it is a client side command. Syntax: /ip:person</li>
+                            <li>New /alert command. This command will send the target a message, it is a client side command. Syntax: /alert:person:message</li>
+                            <li>New /img command. This command will send an image when given the image's link, it is a client side command. Syntax: /img url  ***note this command uses a space instead of a :</li>
+                            <li class="Ttl"><b>Redacted</b></li>
+                            <li></li>
+                            <li></li>
+                            <li class="Ttl"><b>Image Fixes</b></li>
+                            <li>Images now have a max size.</li>
+                            <li>Fixed bug that made images mess with the scroll bar when first loading them.</li>
+                            <li>You can no longer scroll on individual messages, excess is now just excluded.</li>
+                            <li class="Ttl"><b>Pings</b></li>
+                            <li>You can now be pinged while in chat with @example_username, perviously it only worked on the home page.</li>
+                            <li class="Ttl"><b>Roadmap</b></li>
+                            <li>Version 0.9: Profiles and help page</li>
+                            <li>Version 0.10: Gimkit Groups.</li>
+                            <li>Version 1.0: Search engine optimization, possibly Google ads.</li>
+                        </ul>
+                    </li>
+                    <li class="change_blog">
+                        <ul>
+                            <li class="bigTtl"><ul><hr class="left"><li class="versiontext"><b>Version 0.7.2 - 1/2/24</b></li><hr class="right"></ul></li>
+                            <li class="Ttl"><b>Christmas</b></li>
+                            <li>Removed Christmas theme, womp womp.</li>
+                            <li class="Ttl"><b>Roadmap</b></li>
+                            <li>Version 0.8: More fun commands, optimization, bugfixes.</li>
+                            <li>Version 0.9: Profles and Gimkit hacks if I can get them to work.</li>
+                            <li>Version 1.0: Search engine optimization, possibly Google ads.</li>
+                        </ul>
+                    </li>
+                    <li class="change_blog">
+                        <ul>
+                            <li class="bigTtl"><ul><hr class="left"><li class="versiontext"><b>Version 0.7.1 - 12/22/23</b></li><hr class="right"></ul></li>
+                            <li class="Ttl"><b>Christmas</b></li>
+                            <li>Added a Christmas theme, merry Christmas.</li>
+                            <li class="Ttl"><b>Roadmap</b></li>
+                            <li>Version 0.8: More fun commands, optimization, bugfixes.</li>
+                            <li>Version 0.9: Profles and Gimkit hacks if I can get them to work.</li>
+                            <li>Version 1.0: Search engine optimization, possibly Google ads.</li>
+                        </ul>
+                    </li>
+                    <li class="change_blog">
+                        <ul>
+                            <li class="bigTtl"><ul><hr class="left"><li class="versiontext"><b>Version 0.7 - 2023</b></li><hr class="right"></ul></li>
+                            <li class="Ttl"><b>Changelog</b></li>
+                            <li>There is now a changelog to replace the "About" section as it wasn't used for anything.</li>
+                            <li class="Ttl"><b>Chat Scrolling</b></li>
+                            <li>There is now a chat history, you can scroll up to see previous messages.</li>
+                            <li>75 messages are saved compared to 7 that used to be saved before this change.</li>
+                            <li>Large messages and images now appear full size, a more formal way of sending images will be added in the future.</li>
+                            <li class="Ttl"><b>Command changes</b></li>
+                            <li>Some commands have been changed to account for the new chat scrolling</li>
+                            <li>/change command now works differntly. The old syntax was /change:MessageNumber:NewMessage where the message number was the number of the message going from top too bottom, it is now reversed and goes from bottom to top. For example if  you were to change the most recently sent message you would type /change:1:test.</li>
+                            <li>/delete command now works differntly. Used to delete the last sent message but now can delete any message using /delete:MessageNumber, works simmarly to /change.</li>
+                            <li>/clear command removed, made obselete by the updated /delete command.</li>
+                            <li>/fill command removed, was next to useless.</li>
+                            <li>'all' can be used with the /ping command. For example, /ping:all.</li>
+                            <li class="Ttl"><b>Bugfixes/Miscellaneous</b></li>
+                            <li>Fixed the latest code not automaticly refreshing.</li>
+                            <li>Removed the pop-up to check if you are afk as it doesn't do anything in google chrome.</li>
+                            <li>Removed the footer, it was useless and just caused issues.</li>
+                            <li class="Ttl"><b>Roadmap</b></li>
+                            <li>I came up with a basic roadmap for the Gimcodes.</li>
+                            <li>Version 0.8: More fun commands, optimization, bugfixes.</li>
+                            <li>Version 0.9: Profles and Gimkit hacks if I can get them to work.</li>
+                            <li>Version 1.0: Search engine optimization, possibly Google ads.</li>
+                        </ul>
+                    </li>
+                    
+                </ul>
+            </li>
+        </ul>
+
+        <script src="/nav.js"></script>
+        <script src="/crypto.js"></script>
+    </body>
+</html>

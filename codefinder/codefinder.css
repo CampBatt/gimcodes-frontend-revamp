@@ -1,0 +1,9 @@
+body{
+    overflow-y: hidden;
+}
+
+#content #code_stuff{
+    background-color: #3c444b;
+    width: 90vw;
+    height: 100vw;
+}

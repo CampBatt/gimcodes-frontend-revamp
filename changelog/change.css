@@ -1,0 +1,100 @@
+body{
+    overflow-y: hidden;
+}
+
+.linkk{
+    color: rgb(255, 255, 255);
+    padding: 2px;
+}
+
+.linkk:hover{
+    color: #2a2f36;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+#content .changestuff{
+    color: white;
+    background-color:#3c444b;
+    width: 90vw;
+    height: 100vh;
+    border-radius: 0px;
+    position: relative;
+}
+
+#content .changestuff ul.change_list{
+    padding: 0px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100vh;
+    scrollbar-color: #282e35 #495158;
+    scrollbar-width: thin;
+}
+
+#content .changestuff ul .change_blog{
+    width: 90vw;
+}
+
+#content .changestuff ul .change_blog ul{
+    display: grid;
+    padding: 0px;
+    width: 90vw;
+}
+
+#content .changestuff ul .change_blog ul .bigTtl{
+    font-size: 2vw;
+    list-style: none;
+    align-items: center;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+#content .changestuff ul .change_blog ul .bigTtl ul{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: inherit;
+}
+
+#content .changestuff ul .change_blog ul .bigTtl ul li{
+    list-style: none;
+}
+
+#content .changestuff ul .change_blog ul .bigTtl ul li.versiontext{
+    margin: 0px;
+    width: fit-content;
+}
+
+#content .changestuff ul .change_blog ul .bigTtl ul hr{
+    height: 0px;
+    color: #2a2f36;
+    width: 23vw;
+    
+}
+
+#content .changestuff ul .change_blog ul .bigTtl ul hr.left{
+    margin-right: 0.8vw;
+    margin-left: auto;
+}
+
+#content .changestuff ul .change_blog ul .bigTtl ul hr.right{
+    margin-left: 0.8vw;
+    margin-right: auto;
+
+}
+
+#content .changestuff ul .change_blog ul .Ttl{
+    font-size: 1.4vw;
+    margin-left: 11vw;
+    margin-right: auto;
+    list-style: none;
+
+}
+
+#content .changestuff ul .change_blog ul li{
+    width: 71vw;
+    margin-left: 14vw;
+    margin-right: 14vw;
+    display: list-item;
+    list-style:disclosure-closed;
+}

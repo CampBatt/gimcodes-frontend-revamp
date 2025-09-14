@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+
+
+<html>
+    <head>
+        <link rel = "stylesheet" href="/main.css"/>
+        <link rel = "stylesheet", href="/login.css"/>
+        <link rel = "stylesheet" href="codefinder.css"/>
+        <link rel = "icon" href="/favicon.ico" type="image/x-icon"/>
+        <title>Gimcodes</title>
+    </head>
+    <body>
+        <div id="add_chat_menu" class="hidden">
+            <ul>
+                <li class="menu_title">Add a Chat</li>
+                <li class="menu_input"><input value="Chat Name" id="add_chat_input"></li>
+                <li class="menu_button"><div id="add_chat_add_button">Add</div></li>
+            </ul>
+        </div>
+        <div id="create_chat_menu" class="hidden">
+            <ul>
+                <li class="menu_title">Create a Chat</li>
+                <li class="menu_input"><input value="Chat Name" id="create_chat_input"></li>
+                <li class="menu_button"><div id="create_chat_create_button">Create</div></li>
+            </ul>
+        </div>
+        <div id="login_page" class="login_or_sign_up">
+            <ul class="login_ul" id="login_ul">
+                <li class="login_title">Login to Your Account</li>
+                <li id="login_user_input" class="login_input"><input value="Username"></li>
+                <li id="login_pass_input" class="login_input"><input value="Password"></li>
+                <li id="login_button" class="login_button"><div>Login</div></li>
+                <li class="or_option">
+                    <ul><hr class="left_or"><li>or</li><hr class="right_or">
+                    </ul>
+                </li>
+                <li id="create_account_button" class="login_button"><div>Sign Up</div></li>
+            </ul>
+        </div>
+
+        <div id="create_page"  class="login_or_sign_up">
+            <ul class="login_ul" id="create_ul">
+                <li class="login_title">Create a New Account</li>
+                <li id="create_user_input" class="login_input"><input value="Username"></li>
+                <li id="create_email_input" class="login_input"><input value="Email"></li>
+                <li id="create_pass_input" class="login_input"><input value="Password"></li>
+                <li id="create_button" class="login_button"><div>Sign Up</div></li>
+                <li class="or_option">
+                    <ul><hr class="left_or"><li>or</li><hr class="right_or">
+                    </ul>
+                </li>
+                <li id="login_account_button" class="login_button"><div>Login</div></li>
+            </ul>
+        </div>
+        <ul id="content">
+            <li id="serverstuff">
+                <ul id="server_list">
+                    <li class="Gim_logo"><img src="/assets/Gimcodes3.png"></li>
+                    <hr id="server_line_1">
+                    <li class="nav_side"><a href="/codefinder/">Code Finder</a></li>
+                    <li class="nav_side" id="nav_create"><a href="#">Sign Up</a></li>
+                    <li class="nav_side" id="nav_login"><a href="#">Login</a></li>
+                    <li class="nav_side"><a href="/chat/">Chat</a></li>
+                    <li class="nav_side"><a href="/changelog/">Changelog</a></li>
+                    <hr id="server_line_2">
+                    <li class="channle_item" id="add_a_chat"><ul><li><img src="/assets/add_icon.png"></li><li class="server_text"><a href="#">Add a Chat</a></li></ul></li>
+                    <li class="channle_item" id="create_a_chat"><ul><li><img src="/assets/add_icon.png"></li><li class="server_text"><a href="#">Create a Chat</a></li></ul></li>
+                    <hr id="server_line_3">
+                    </li>
+                </ul>
+            </li><li id="code_stuff">
+                <div class="container">
+                    <section class="intro">
+                        <h2 class="page-title">Code Finder</h2>
+                        <p>
+                            This page allows you to find codes for Gimkit games and do a little trolling, Gimcodes' original purpose. The "Latest Code" is a code found using the code finder, the "Manual Code" is a code that is set manually by a user.
+                        </p>
+                    </section>
+            
+                    <section class="code-section">
+                        <div class="card">
+                            <h2>Latest Code</h2>
+                            <p id="latest-code">XXXXXX</p>
+                        </div>
+                        <div class="card">
+                            <h2>Manual Code</h2>
+                            <p id="manual-code">XXXXXX</p>
+                        </div>
+                        <button class="find-code-btn" id="find_code">Find New Code</button>
+                    </section>
+            
+                    <section class="how-it-works">
+                        <h2>How It Works</h2>
+                        <p>
+                            Gimkit games need a code to be able to join them, this tool uses a brute force method to find working codes.
+                        </p>
+                        <p>
+                            When you enter a code to join a Gimkit game your browser sends a request to the Gimkit API to get info about the game that you're joining. If you give an incorrect code you the API responds with an error, if you supply a valid code the API will give the info. The code finder abuses this to find codes that work. 
+                        </p>
+                    </section>
+                </div>
+            </li>
+        </ul>
+        <script src="main.js"></script>
+        <script src="setup.js"></script>
+        <script src="/nav.js"></script>
+        <script src="/crypto.js"></script>
+    </body>
+</html>
