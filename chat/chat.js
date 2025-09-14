@@ -7,7 +7,7 @@ var FirstTime  = true
 var modifiers = 'none'
 var websocket_object = null;
 var previous_message_state = null
-var SERVER_IP = "http://127.0.0.1:8000"
+var SERVER_IP = "https://api.gimcodes.com"
 chat_input.addEventListener('focus',input_focus);
 chat_input.addEventListener('keypress',input_send);
 chat_input.addEventListener('blur',input_blur);

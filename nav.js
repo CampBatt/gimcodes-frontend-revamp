@@ -1,4 +1,4 @@
-﻿var SERVER_IP = "http://127.0.0.1:8000"
+﻿var SERVER_IP = "https://api.gimcodes.com"
 var line1 = document.getElementById("server_line_1");
 var line2 = document.getElementById("server_line_2");
 var line3 = document.getElementById("server_line_3");
