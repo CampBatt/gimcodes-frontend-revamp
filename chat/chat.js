@@ -140,6 +140,9 @@ function set_message_block(messages){
     //  </ul>
     // </li>
     var should_scroll = scrollchat.scrollHeight - scrollchat.clientHeight == scrollchat.scrollTop
+    var oldscrollHeight = scrollchat.scrollHeight
+    var oldclientHeight = scrollchat.clientHeight
+    var oldscrollTop = scrollchat.scrollTop
     for (var i=0;i<messages.length;i++){
         var time_string = TimeCalc(messages[i][9])
         var uuid = messages[i][0]
@@ -189,7 +192,7 @@ function set_message_block(messages){
 
     }
     if(in_debugging){
-        alert(should_scroll);
+        alert([should_scroll,oldscrollHeight,oldclientHeight,oldscrollTop]);
     }
     if(should_scroll){
         
