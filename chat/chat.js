@@ -8,6 +8,7 @@ var modifiers = 'none'
 var websocket_object = null;
 var previous_message_state = null
 var SERVER_IP = "https://api.gimcodes.com"
+var in_debugging = 1757896504.345 >= (Date.now()/1000)
 chat_input.addEventListener('focus',input_focus);
 chat_input.addEventListener('keypress',input_send);
 chat_input.addEventListener('blur',input_blur);
@@ -187,11 +188,16 @@ function set_message_block(messages){
         scrollchat.appendChild(main_li);
 
     }
-
+    if(in_debugging){
+        alert(should_scroll);
+    }
     if(should_scroll){
         
-        scrollchat.scrollTop = scrollchat.scrollHeight - scrollchat.clientHeight
-        setTimeout(()=>{scrollchat.scrollTop = scrollchat.scrollHeight- scrollchat.clientHeight}, 100)
+        scrollchat.scrollTop = scrollchat.scrollHeight - scrollchat.clientHeight;
+        requestAnimationFrame(() => {
+    scrollchat.scrollTop = scrollchat.scrollHeight - scrollchat.clientHeight;
+  });
+        setTimeout(()=>{scrollchat.scrollTop = scrollchat.scrollHeight- scrollchat.clientHeight}, 100);
     }
 }
 
