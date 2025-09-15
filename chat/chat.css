@@ -69,6 +69,13 @@ body{
     
 }
 
+@media (max-height: 750px){
+    #content .chatstuff div ul{
+    max-height: 89vh;
+}
+    
+}
+
 #content .chatstuff div ul li{
     display: block;
     margin-bottom: 20px;
