@@ -73,6 +73,12 @@ body{
     #content .chatstuff div ul{
     max-height: 89vh;
 }
+}
+
+@media (max-height: 610px){
+    #content .chatstuff div ul{
+    max-height: 88vh;
+}
     
 }
 
