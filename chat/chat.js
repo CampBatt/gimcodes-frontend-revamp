@@ -3,15 +3,45 @@ var scrollchat = document.getElementById('ScrollChat');
 var inner_bar = document.getElementById('inner_bar');
 var Formater = document.getElementById("Formater");
 var chat_name_display = document.getElementById("chat_name");
+var image_button = document.getElementById("imagebutton");
+var youtube_button = document.getElementById("youtubebutton");
 var FirstTime  = true
 var modifiers = 'none'
 var websocket_object = null;
 var previous_message_state = null
+var image_activated = false;
+var youtube_activated= false;
 var SERVER_IP = "https://api.gimcodes.com"
 chat_input.addEventListener('focus',input_focus);
 chat_input.addEventListener('keypress',input_send);
 chat_input.addEventListener('blur',input_blur);
 
+
+image_button.addEventListener("click",function(){
+    var color
+    if (image_activated){
+        color = "";
+    }else{
+        color = "#729dff"
+    }
+    image_button.style.backgroundColor = color;
+    image_activated =  !image_activated;
+    youtube_activated = false;
+    youtube_button.style.backgroundColor = "";
+});
+
+youtube_button.addEventListener("click",function(){
+    var color
+    if (youtube_activated){
+        color = "";
+    }else{
+        color = "#729dff"
+    }
+    youtube_button.style.backgroundColor = color;
+    youtube_activated =  !youtube_activated;
+    image_activated = false;
+    image_button.style.backgroundColor = "";
+});
 
 function input_blur(){
     if (this.value == ''){
@@ -44,7 +74,16 @@ async function sendMessage(message){
     var token = localStorage.getItem("token");
     var chat_url = new URL(window.location.toLocaleString()).searchParams;
     var chat_uuid = chat_url.get("u");
-    var message_command = {"command":"send_message","account_uuid":account_uuid,"token":token,"chat_uuid":chat_uuid,"message_content":message,"message_type":"PUBLIC-CHAT"};
+    var media_type;
+    if(image_activated){
+        media_type="URL-IMAGE";
+    }
+    else if(youtube_activated){
+        media_type="URL-VIDEO"
+    }else{
+        media_type="TEXT"
+    }
+    var message_command = {"command":"send_message","account_uuid":account_uuid,"token":token,"chat_uuid":chat_uuid,"message_content":message,"message_type":"PUBLIC-CHAT","media_type":media_type};
     websocket_object.send(JSON.stringify(message_command))
 }
 
@@ -147,6 +186,7 @@ function set_message_block(messages){
         var uuid = messages[i][0]
         var username = messages[i][11]
         var message_text = messages[i][3]
+        var media_type = messages[i][4];
         ////
         var main_li = document.createElement("li");
         main_li.id = uuid;
@@ -173,7 +213,19 @@ function set_message_block(messages){
 
         var message_li = document.createElement("li");
         message_li.className="messagething";
-        message_li.innerText = message_text;
+        if (media_type=="URL-IMAGE"){
+            var message_image = document.createElement("img");
+            message_image.src = message_text;
+            message_image.onerror = function(){this.src="/assets/brokenicon.png"}
+            message_li.appendChild(message_image);
+        }else if(media_type=="URL-VIDEO"){
+            var message_video = document.createElement("iframe");
+            message_video.src = "https://www.youtube.com/embed/" + message_text;
+            message_li.appendChild(message_video)
+        }else{
+            message_li.innerText = message_text;
+        }
+        
 
         main_li.appendChild(main_ul);
         main_ul.appendChild(pfp_img);

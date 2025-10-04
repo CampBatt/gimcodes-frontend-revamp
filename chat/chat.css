@@ -96,6 +96,24 @@ body{
     overflow: hidden;
 }
 
+#content .chatstuff div ul li img{
+    height: 30vh;
+    background-color: #495158;
+    border-radius: 5px;
+    border-color: #495158;
+    border-style: solid;
+    border-width: 0px;
+}
+
+#content .chatstuff div ul li iframe{
+    height: 30vh;
+    width: 53.33vh;
+    background-color: #495158;
+    border-radius: 5px;
+    display: block;
+    border-style: none;
+}
+
 #content .chatstuff div ul #chat_name{
     margin: 0px;
     padding: 0px;
@@ -112,6 +130,42 @@ body{
 
 }
 
+#content .chatstuff div #message_input ul{
+    background-color: #495158;
+}
+
+#content .chatstuff div #message_input ul li{
+    height: 2vw;
+    margin: 0px;
+    padding: 0px;
+    background-color: #495158;
+    width: fit-content;
+    display: inline-block;
+}
+
+#content .chatstuff div #message_input ul li.iconslistt{
+    background-color: #626c75;
+    border-radius: 1000px;
+    padding-right: 0.5vw;
+    margin-left: 0.25vw;
+    margin-right: 0.25vw;
+}
+
+#content .chatstuff div #message_input ul li img{
+    height: 1.25vw;
+    padding: 0.25vw;
+    margin-top: 0.125vw;
+    margin-bottom: 0.125vw;
+    margin-left: 0.5vw;
+    border-radius: 0.5vw;
+}
+
+#content .chatstuff div #message_input ul li img:hover{
+    cursor: pointer;
+    background-color: #384047;
+}
+
+
 #content .chatstuff div #message_input{
     position: absolute;
     display: block;
@@ -119,7 +173,7 @@ body{
     background-color: #3c444b;
     margin-left: 2vw;
     margin-right: 2vw;
-    padding-left: 1vw;
+    padding-left: 0vw;
     padding-bottom: 1px;
     border-radius: 5px;
     scroll-behavior: smooth;
@@ -130,12 +184,13 @@ body{
     color: white;
 }
 
-#content .chatstuff div #message_input input{
-    width: 100%;
+#content .chatstuff div #message_input ul input{
+    width: 79vw;
+    margin-left: 0.5vw;
     color: #9e9c9c;
 }
 
-#content .chatstuff div #message_input input:focus{
+#content .chatstuff div #message_input ul input:focus{
     color: white;
 }
 
