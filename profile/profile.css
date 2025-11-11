@@ -1,0 +1,90 @@
+body{
+    overflow-y: hidden;
+}
+
+#content .changestuff{
+    color: white;
+    background-color:#3c444b;
+    width: 90vw;
+    height: 100vh;
+    border-radius: 0px;
+    position: relative;
+}
+
+#content .changestuff ul{
+    padding: 0px;
+}
+#content .changestuff ul li ul{
+    background-color: #4d565e;
+    margin-top: 3vh;
+    width: 70vw;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    border-radius: 2vh;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+}
+
+#content .changestuff ul li ul li{
+    height: fit-content;
+    
+}
+
+#content .changestuff ul li ul li ul{
+    width: fit-content;
+    display: block;
+}
+
+#content .changestuff ul li ul li#pm_button{
+    background-color: #729dff;
+    transition: background 0.3s;
+    font-size: 1.5vw;
+    border-radius: 100vw;
+    padding: 1vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#content .changestuff ul li ul li#pm_button:hover{
+    cursor: pointer;
+    background-color: #5879c7;
+}
+
+#content .changestuff ul li ul li ul#account_information{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+#content .changestuff ul li ul li ul#account_information li{
+    display: block;
+    height: fit-content;
+}
+#content .changestuff ul li ul li ul#account_information li.account_info_ttl{
+    font-size: 2vw;
+}
+#content .changestuff ul li ul li ul#account_information li{
+    font-size: 1vw;
+}
+#content .changestuff ul li ul li ul#pfp_name{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+#content .changestuff ul li ul li ul#pfp_name li{
+    display: block;
+    text-align: center;
+    width: 25vw;
+    height: fit-content;
+}
+
+#content .changestuff ul li ul li ul#pfp_name li img{
+    width: 10vw;
+    border-radius: 100vw;
+}
+
+#content .changestuff ul li ul li ul#pfp_name li#profile_username{
+    text-align: center;
+    font-size: 2vw;
+}

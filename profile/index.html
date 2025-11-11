@@ -1,14 +1,16 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 
 <html>
     <head>
-        <link rel = "stylesheet" href="/main.css"/>
+        <link rel = "stylesheet", href="/main.css"/>
         <link rel = "stylesheet", href="/login.css"/>
-        <link rel = "stylesheet" href="codefinder.css"/>
+        <link rel = "stylesheet", href="profile.css"/>
         <link rel = "icon" href="/favicon.ico" type="image/x-icon"/>
-        <title>Gimcodes</title>
+        <title>Gimcodes Changelog</title>
     </head>
+
+
     <body>
         <div id="add_chat_menu" class="hidden">
             <ul>
@@ -69,42 +71,35 @@
                     <hr id="server_line_3">
                     </li>
                 </ul>
-            </li><li id="code_stuff">
-                <div class="container">
-                    <section class="intro">
-                        <h2 class="page-title">Code Finder</h2>
-                        <p>
-                            This page allows you to find codes for Gimkit games and do a little trolling, Gimcodes' original purpose. The "Latest Code" is a code found using the code finder, the "Manual Code" is a code that is set manually by a user.
-                        </p>
-                    </section>
-            
-                    <section class="code-section">
-                        <div class="card">
-                            <h2>Latest Code</h2>
-                            <p id="latest-code">XXXXXX</p>
-                        </div>
-                        <div class="card">
-                            <h2>Manual Code</h2>
-                            <p id="manual-code">XXXXXX</p>
-                        </div>
-                        <button class="find-code-btn" id="find_code">Find New Code</button>
-                    </section>
-            
-                    <section class="how-it-works">
-                        <h2>How It Works</h2>
-                        <p>
-                            Gimkit games need a code to be able to join them, this tool uses a brute force method to find working codes.
-                        </p>
-                        <p>
-                            When you enter a code to join a Gimkit game your browser sends a request to the Gimkit API to get info about the game that you're joining. If you give an incorrect code you the API responds with an error, if you supply a valid code the API will give the info. The code finder abuses this to find codes that work. 
-                        </p>
-                    </section>
-                </div>
+            </li><li class="changestuff">
+                <uL>
+                    <li>
+                        <ul>
+                            <li>
+                                <ul id="pfp_name">
+                                    <li><img src="/assets/dpfp1.jpg" id="profile_pfp"></li>
+                                    <li id="profile_username">_</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul id="account_information">
+                                    <li class="account_info_ttl">Account Information</li>
+                                    <li id="last_online">Last Online: _</li>
+                                    <li id="join_date">Join Date: _</li>
+                                    <li id="num_messages">Messages Sent: _</li>
+                                    <li id="num_images">Images Sent: _</li>
+                                    <li id="num_videos">Videos Sent: _</li>
+                                    <li id="profile_uuid">UUID: _</li>
+                                </ul>
+                            </li>
+                            <li id="pm_button">Private Message</li>
+                        </ul>
+                    </li>
+                </uL>
             </li>
         </ul>
-        <script src="main.js"></script>
-        <script src="setup.js"></script>
         <script src="/nav.js"></script>
         <script src="/crypto.js"></script>
+        <script src="profile.js"></script>
     </body>
 </html>

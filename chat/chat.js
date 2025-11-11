@@ -11,7 +11,9 @@ var websocket_object = null;
 var previous_message_state = null
 var image_activated = false;
 var youtube_activated= false;
-var SERVER_IP = "https://api.gimcodes.com"
+var recipient_public_key = null;
+var chat_type
+//var SERVER_IP = "https://api.gimcodes.com"
 chat_input.addEventListener('focus',input_focus);
 chat_input.addEventListener('keypress',input_send);
 chat_input.addEventListener('blur',input_blur);
@@ -69,6 +71,42 @@ function input_send(event){
     
 }
 
+function command_parser(message){
+    var local_commands = ["/image","/video"]
+    var server_commands = ["/delete",]
+
+    if (message[0] != "/"){
+        return [message,"TEXT"];
+    }
+    command = message.split(" ")
+    var command_name = command[0]
+    console.log(command_name)
+    if(local_commands.includes(command_name)){
+        if(command_name=="/image"){
+            var src = command[1]
+            if(command[1].slice(0,4) == "<img"){
+                var parser = new DOMParser();
+                var doc = parser.parseFromString(command[1], 'text/html');
+                var img = doc.querySelector('img');
+                src = img.getAttribute('src');
+            }
+            return [src,"URL-IMAGE"]
+        }
+        if(command_name=="/video"){
+            var video_id = command[1]
+            if(command[1].includes("youtube.com/watch")){
+                var url_attempt = new URL(command[1]).searchParams;
+                video_id = url_attempt.get("v");
+            }
+            
+            return [video_id,"URL-VIDEO"]
+        }
+    }
+    return [message,"TEXT"]
+    
+
+}
+
 async function sendMessage(message){
     var account_uuid = localStorage.getItem("account_uuid");
     var token = localStorage.getItem("token");
@@ -77,13 +115,43 @@ async function sendMessage(message){
     var media_type;
     if(image_activated){
         media_type="URL-IMAGE";
+        if(message.slice(0,4) == "<img"){
+                var parser = new DOMParser();
+                var doc = parser.parseFromString(message, 'text/html');
+                var img = doc.querySelector('img');
+                message = img.getAttribute('src');
+            }
     }
     else if(youtube_activated){
         media_type="URL-VIDEO"
+        if(message.includes("youtube.com/watch")){
+            var url_attempt = new URL(message).searchParams;
+            var video_id = url_attempt.get("v");
+            message = video_id
+        }
     }else{
-        media_type="TEXT"
+
+        data = command_parser(message);
+        message = data[0];
+        media_type = data[1];
     }
-    var message_command = {"command":"send_message","account_uuid":account_uuid,"token":token,"chat_uuid":chat_uuid,"message_content":message,"message_type":"PUBLIC-CHAT","media_type":media_type};
+
+    if(chat_type=="PRIVATE-DM"){
+        var data = await encrypt_message(message,recipient_public_key,localStorage.getItem("public_key"));
+        message= data[0]
+        recipient_key = data[1]
+        sender_key = data[2]
+        iv = data[3]
+        message_type = "PRIVATE-DM"
+    }else{
+        recipient_key = null
+        sender_key = null
+        iv =null
+        message_type = "PUBLIC-CHAT"
+    }
+
+    var message_command = {"command":"send_message","account_uuid":account_uuid,"token":token,"chat_uuid":chat_uuid,"message_content":message,"message_type":message_type,"media_type":media_type,"iv":iv,"recipient_key":recipient_key,"sender_key":sender_key};
+    console.log(message_command);
     websocket_object.send(JSON.stringify(message_command))
 }
 
@@ -124,6 +192,8 @@ async function chat_websocket(){
     var chat_url = new URL(window.location.toLocaleString()).searchParams;
     var chat_uuid = chat_url.get("u");
     var chat_name = chat_url.get("n");
+    chat_type = chat_url.get("t");
+    var recipient = chat_url.get("r");
     if (chat_uuid ==null){
         chat_uuid = "91972446-6f6f-482a-8e59-2fabd379d770"
         chat_name = "General"
@@ -136,6 +206,9 @@ async function chat_websocket(){
     socket.onopen = function(){
         socket.send(JSON.stringify(initial_update1));
         socket.send(JSON.stringify(initial_update2));
+        if(chat_type=="PRIVATE-DM"){
+            socket.send(JSON.stringify({"command":"get_public_key","account_uuid":recipient}))
+        }
         websocket_object = socket;
     }
     socket.onmessage = async (message)=>{
@@ -152,12 +225,15 @@ async function chat_websocket(){
         if (data["command"]=="add_messages"){
             set_message_block(data["messages"])
         }
+        if (data["command"]=="get_public_key"){
+            recipient_public_key = data["key"]
+        }
     }
 }
 
 //////////////////////////
 
-function set_message_block(messages){
+async function set_message_block(messages){
     var temp_pfp = "/assets/dpfp1.jpg"
 
     //<li id="60e76b79-80c0-43ab-920a-8f738dfabb1c">
@@ -187,6 +263,16 @@ function set_message_block(messages){
         var username = messages[i][11]
         var message_text = messages[i][3]
         var media_type = messages[i][4];
+        var enc_aes
+        if(messages[i][5]=="PRIVATE-DM"){
+            if(messages[i][1]==localStorage.getItem("account_uuid")){
+                enc_aes = messages[i][8]
+            }else{
+                enc_aes = messages[i][7]
+            }
+            message_text = await decrypt_message(message_text,enc_aes,localStorage.getItem("private_key"),messages[i][6]);
+        }
+
         ////
         var main_li = document.createElement("li");
         main_li.id = uuid;
@@ -195,6 +281,8 @@ function set_message_block(messages){
         var pfp_img = document.createElement("img");
         pfp_img.src=temp_pfp
         pfp_img.className = "imgpfp";
+        let temp = "/profile/?u="+messages[i][1]
+        pfp_img.addEventListener("click",function(){location.href=temp})
 
         var main_text_ul = document.createElement("ul");
         var message_info_li = document.createElement("li");
@@ -266,44 +354,7 @@ function updateTimes(){
     }
 }
 
-function TimeCalc(input_time){
-    var current_time = Math.round(Date.now()/1000);
-    input_time = Math.round(input_time)
-    var time_ago = current_time - input_time
-    input_time = parseInt(input_time);
-    if (time_ago <60){
-        return time_ago.toString() + ' seconds ago'
-    };
 
-
-    if (time_ago >= 60 && time_ago < 3600){
-        var units = Math.round(time_ago/60)
-        if (units == 1){
-            return '1 minute ago'
-        };
-        return units.toString() + ' minutes ago'
-    };
-
-
-    if (time_ago >= 3600 && time_ago < 86400){
-        var units = Math.round(time_ago/3600)
-        if (units == 1){
-            return '1 hour ago'
-        };
-        return units.toString() + ' hours ago'
-    };
-
-
-    if (time_ago >= 86400){
-        var units = Math.round(time_ago/86400)
-        if (units == 1){
-            return '1 day ago'
-        };
-        return units.toString() + ' days ago'
-    };
-
-
-};
 
 
 

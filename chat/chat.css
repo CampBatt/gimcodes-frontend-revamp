@@ -216,7 +216,7 @@ body{
 }
 
 #content .chatstuff div ul li ul img.imgpfp{
-    border-radius: 10px;
+    border-radius: 100vw;
     width: 35px;
     height: 35px;
     margin-top: 4.25px;
