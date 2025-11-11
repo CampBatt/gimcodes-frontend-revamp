@@ -1,4 +1,5 @@
 ﻿var SERVER_IP = "https://api.gimcodes.com"
+//var SERVER_IP = "http://127.0.0.1:8000"
 var line1 = document.getElementById("server_line_1");
 var line2 = document.getElementById("server_line_2");
 var line3 = document.getElementById("server_line_3");
@@ -329,7 +330,7 @@ async function add_public_chat(chat_name){
     }
 }
 
-async function get_accociated_chats(){
+async function get_accociated_chats(rerender=true){
     var account_uuid = localStorage.getItem("account_uuid");
     var token = localStorage.getItem("token");
     var res = await fetch(SERVER_IP+"/get_accociated_chats",{
@@ -341,6 +342,9 @@ async function get_accociated_chats(){
         })
     })
     data = await res.json()
+    if(rerender==false){
+        return data;
+    }
     //<li class="channle_item"><ul><li><img src="/assets/dpfp2.jpg"></li><li class="server_text"><a href="/chat/?u=91972446-6f6f-482a-8e59-2fabd379d770">General Chat</a></li></ul></li>
     if (data["success"]){
         data = data["data"]
@@ -350,16 +354,22 @@ async function get_accociated_chats(){
         var sp4 = '</a></li></ul>'
         for(var i=0;i<data.length;i++){
             if(data[i][10]==null){
-                var pfp_link = "/assets/dpfp2.jpg"
+                if(data[i][4]!="PRIVATE-DM"){
+                    var pfp_link = "/assets/dpfp2.jpg"
+                }else{
+                    var pfp_link = "/assets/dpfp1.jpg"
+                }
             }
-            var server_list_item = sp1+pfp_link+sp2+data[i][1]+"&n="+data[i][11]+sp3+data[i][11]+sp4;
-            if(data[i][4]!="DM"){
+            var server_list_item = sp1+pfp_link+sp2+data[i][1]+"&n="+data[i][11]+"&t="+data[i][4]+"&r="+data[i][3]+sp3+data[i][11]+sp4;
+            if(data[i][4]!="PRIVATE-DM"){
                 var temp_line = line2
                 
 
             }else{
                 var temp_line = line3;
+                
             }
+            
             var temp_element = document.createElement("li");
             temp_element.className = "channle_item";
             temp_element.innerHTML = server_list_item;
@@ -408,5 +418,47 @@ async function create_account(username,email,password){
         }
     }
 }
+
+function TimeCalc(input_time){
+    var current_time = Math.round(Date.now()/1000);
+    input_time = Math.round(input_time)
+    var time_ago = current_time - input_time
+    input_time = parseInt(input_time);
+    if (time_ago==0){
+        return "Now"
+    }
+    if (time_ago <60){
+        return time_ago.toString() + ' seconds ago'
+    };
+
+
+    if (time_ago >= 60 && time_ago < 3600){
+        var units = Math.round(time_ago/60)
+        if (units == 1){
+            return '1 minute ago'
+        };
+        return units.toString() + ' minutes ago'
+    };
+
+
+    if (time_ago >= 3600 && time_ago < 86400){
+        var units = Math.round(time_ago/3600)
+        if (units == 1){
+            return '1 hour ago'
+        };
+        return units.toString() + ' hours ago'
+    };
+
+
+    if (time_ago >= 86400){
+        var units = Math.round(time_ago/86400)
+        if (units == 1){
+            return '1 day ago'
+        };
+        return units.toString() + ' days ago'
+    };
+
+
+};
 
 get_accociated_chats()

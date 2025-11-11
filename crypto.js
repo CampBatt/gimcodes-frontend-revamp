@@ -4,6 +4,7 @@ function bytesToBase64(buf) {
 }
 
 function base64ToBytes(b64) {
+  console.log(b64)
   return Uint8Array.from(atob(b64), c => c.charCodeAt(0));
 }
 
