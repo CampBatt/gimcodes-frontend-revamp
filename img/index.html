@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <body style="padding: 0px; margin: 0px; background-image: linear-gradient(to bottom, black,rgb(43, 43, 43)); height: 100vh; text-align: center; overflow: hidden;">
+        <canvas id="can"></canvas>
+        <img id="fake_img" style="display: none;">
+    </body>
+    <script>
+        var can = document.getElementById("can")
+        var url = new URL(window.location.toLocaleString()).searchParams;
+        var fake_img = document.getElementById("fake_img")
+        var can_ctx = can.getContext("2d");
+        img_url = url.get("i")
+        fake_img.src = img_url
+
+        document.body.addEventListener("keypress",function(e){
+                if(e.key=="Enter"||e.key=="r"){
+                    var base = location.href.split("?")[0] +="?i="
+                    location.href = base
+                }
+
+            })
+
+        fake_img.onload = function(){
+            var max_h = window.innerHeight
+            var max_w = window.innerWidth
+            var h = fake_img.height;
+            var w = fake_img.width;
+            can_ctx.height = h;
+            can_ctx.width = w;
+            can.height = h;
+            can.width = w;
+            var height_ratio = h/max_h
+            var width_ratio = w/max_w
+            if (height_ratio<=1 && width_ratio<=1){
+                console.log("fits")
+            }else if(height_ratio>width_ratio){
+                console.log("doesn't fit, height problem")
+                can.style.height = "95vh"
+            }else{
+                console.log("doesn't fit, width problem")
+                can.style.width = "95vw"
+            }
+            var margin = (max_h - can.height)/2
+            can.style.marginTop = margin + "px"
+            can.style.marginBottom = margin + "px"
+            
+            can_ctx.drawImage(fake_img,0,0);
+        }
+    </script>
+</html>
