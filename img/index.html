@@ -5,6 +5,9 @@
         <img id="fake_img" style="display: none;">
     </body>
     <script>
+        if (!location.href.includes("?i=")){
+            location.href = location.href.split("?")[0] +="?i="
+        }
         var can = document.getElementById("can")
         var url = new URL(window.location.toLocaleString()).searchParams;
         var fake_img = document.getElementById("fake_img")
@@ -14,8 +17,7 @@
 
         document.body.addEventListener("keypress",function(e){
                 if(e.key=="Enter"||e.key=="r"){
-                    var base = location.href.split("?")[0] +="?i="
-                    location.href = base
+                    location.href = location.href.split("?")[0] +="?i="
                 }
 
             })
